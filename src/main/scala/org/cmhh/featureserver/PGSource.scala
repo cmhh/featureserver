@@ -1,5 +1,8 @@
 package org.cmhh.featureserver
 
+/**
+ * Representation of a PostGIS feature class.
+ */
 case class PGSource(
   tableCatalog: String, tableSchema: String, tableName: String, 
   geometryColumn: String, srid: Int, geomType: String

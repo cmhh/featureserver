@@ -43,17 +43,16 @@ trait CORSHandler{
     response.withHeaders(corsResponseHeaders)
 }
 
+/**
+ * Entrypoint / service.
+ */
 object Service extends App with CORSHandler {  
   implicit val system = ActorSystem("featureserver")
   implicit val executionContext = system.dispatcher
 
   object routes {
-    val version = path("version") {
-      complete(HttpEntity(ContentTypes.`application/json`, "[\"0.1.0\"]"))
-    }
-
     val listFeatures = path("listFeatures") {
-      db.geometryColumns match {
+      utils.geometryColumns match {
         case Success(features) =>
           complete(HttpEntity(
             ContentTypes.`application/json`,
@@ -74,8 +73,8 @@ object Service extends App with CORSHandler {
         val `application/geopackage+sqlite3` = MediaType.customBinary(
           "application", "geopackage+sqlite3", MediaType.Compressible
         )
-        db.exportAndZip(name, format, epsg, simplify) match {
-          case Success(res) =>
+        utils.exportAndZip(catalog, schema, name, format, epsg, simplify) match {
+          case NonEmpty(res) =>
             val d = new java.io.File(res._1)
             val f = new java.io.File(res._2)
             val source = FileIO
@@ -89,10 +88,14 @@ object Service extends App with CORSHandler {
             respondWithHeader(`Content-Disposition`(attachment, Map("filename" -> f.getName()))) {
               complete(HttpEntity(ContentTypes.`application/octet-stream`, source))
             }
-          case Failure(e) =>
+          case Empty =>
+            complete(HttpResponse(
+              StatusCodes.NoContent
+            ))
+          case Error(e) =>
             complete(HttpResponse(
               StatusCodes.InternalServerError, 
-              entity = HttpEntity(ContentTypes.`application/json`, """"Failed to create file."""")
+              entity = HttpEntity(ContentTypes.`application/json`, s""""${e.getMessage()}"""")
             ))
         }
       }
@@ -103,7 +106,7 @@ object Service extends App with CORSHandler {
     pathPrefix("featureserver") { 
       corsHandler(
         get {
-          routes.version ~ routes.listFeatures ~ routes.getFeatureClass
+          routes.listFeatures ~ routes.getFeatureClass
         })
     }
 
@@ -115,14 +118,3 @@ object Service extends App with CORSHandler {
     .flatMap(_.unbind()) 
     .onComplete(_ => system.terminate()) 
 }
-
-/*
-http://localhost:9001/featureserver/getFeatureClass?catalog=gis&schema=statsnz&name=regc2022
-http://localhost:9001/featureserver/getFeatureClass?catalog=gis&schema=statsnz&name=regc2022&format=shapefile
-http://localhost:9001/featureserver/getFeatureClass?catalog=gis&schema=statsnz&name=regc2022&format=geojson
-
-
-http://localhost:9001/featureserver/getFeatureClass?catalog=gis&schema=statsnz&name=regc2022&format=gpkg
-http://localhost:9001/featureserver/getFeatureClass?catalog=gis&schema=statsnz&name=mbhg2022
-http://localhost:9001/featureserver/getFeatureClass?catalog=gis&schema=statsnz&name=mbhg2022&simplify=100
-*/

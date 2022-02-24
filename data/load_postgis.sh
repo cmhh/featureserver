@@ -11,61 +11,73 @@ ogr2ogr \
   regionalcouncil2022.gpkg \
   -nln statsnz.regional_council_2022
 
+printf "Loading Māori constituency 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   maoriconstituency2022.gpkg \
   -nln statsnz.maori_constituency_2022
 
+printf "Loading constituency 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   constituency2022.gpkg \
   -nln statsnz.constituency_2022
 
+printf "Loading Māori ward 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   maoriward2022.gpkg \
   -nln statsnz.maori_ward_2022
 
+printf "Loading territorial authority...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   ta2022.gpkg \
   -nln statsnz.territorial_authority_2022
 
+printf "Loading territorial authority local board...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   talb2022.gpkg \
   -nln statsnz.territorial_authority_local_board_2022
 
+printf "Loading subdivision 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   subdivision2022.gpkg \
   -nln statsnz.subdivision_2022
 
+printf "Loading community board 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   communityboard2022.gpkg \
   -nln statsnz.community_board_2022
 
+printf "Loading ward 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   ward2022.gpkg \
   -nln statsnz.ward_2022
 
+printf "Loading urban / rural area 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   urbanrural2022.gpkg \
   -nln statsnz.urbanrural_2022
 
+printf "Loading statistical areas level 1, 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   statisticalarea12022.gpkg \
   -nln statsnz.statistical_area_1_2022
 
+printf "Loading statistical areas level 2, 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   statisticalarea22022.gpkg \
   -nln statsnz.statistical_area_2_2022
 
+printf "Loading meshblock 2022...\n"
 ogr2ogr \
   -f PostgreSQL PG:"dbname='gis' user='gisuser' password='gisuser'" \
   meshblock2022.gpkg \
