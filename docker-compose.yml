@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  backend:
+    image: featureserver-backend
+    build:
+      context: ./
+      dockerfile: docker/backend/Dockerfile
+    ports:
+      - 5433:5432
+    volumes:
+      - ./data:/data
+    tty: true
+    networks:
+      - featureserver
+  service:
+    image: featureserver-service
+    build:
+      context: ./
+      dockerfile: docker/service/Dockerfile
+    ports:
+      - 9002:9001
+    command: ["java", "-Dpostgis.host=backend", "-cp", "/featureserver.jar", "org.cmhh.featureserver.Service"]
+    tty: true
+    networks:
+      - featureserver
+networks:
+  featureserver: 
