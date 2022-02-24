@@ -24,6 +24,8 @@ The repository also contains a containerised setup for testing.  Assuming `sbt a
 docker-compose up -d
 ```
 
+* Note that this includes geopackage files the `./data` folder which requires [`lfs`](https://git-lfs.github.com/).  That is, clone using `git lfs clone`, rather than `git clone`. 
+
 The service will then be available on localhost at port 9002.  There are just two endpoints: `/listFeatures` will list the available features, and `/getFeatureClass` can be used to download a specific feature.  For example:
 
 ```bash
