@@ -1,0 +1,15 @@
+file                       | original source
+---------------------------|-----------------
+communityboard2022.gpkg    | [Community Board 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106696-community-board-2022-clipped-generalised/)
+constituency2022.gpkg      | [Constituency 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106660-constituency-2022-clipped-generalised/)
+maoriconstituency2022.gpkg | [Māori Constituency 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106664-maori-constituency-2022-clipped-generalised/)
+maoriward2022.gpkg         | [Māori Ward 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106700-maori-ward-2022-clipped-generalised/)
+meshblock2022.gpkg         | [Meshblock 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106723-meshblock-2022-clipped-generalised/)
+regionalcouncil2022.gpkg   | [Regional Council 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106667-regional-council-2022-clipped-generalised/)
+statisticalarea12022.gpkg  | [Statistical Area 1 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106709-statistical-area-1-2022-clipped-generalised/)
+statisticalarea22022.gpkg  | [Statistical Area 2 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106706-statistical-area-2-2022-clipped-generalised/)
+subdivision2022.gpkg       | [Territorial Authority 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106672-subdivision-2022-clipped-generalised/)
+ta2022.gpkg                | [Territorial Authority 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106669-territorial-authority-2022-clipped-generalised/)
+talb2022.gpkg              | [Territorial Authority Local Board 2022 Clipped (generalised)](https://datafinder.stats.govt.nz/layer/106694-territorial-authority-local-board-2022-clipped-generalised/)
+urbanrural2022.gpkg        | [Urban Rural 2022 Clipped (Generalised)](https://datafinder.stats.govt.nz/layer/106703-urban-rural-2022-clipped-generalised/)
+ward2022.gpkg              | [Ward 2022 Clipped (Generalised)](https://datafinder.stats.govt.nz/layer/106698-ward-2022-clipped-generalised/)
