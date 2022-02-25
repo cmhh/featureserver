@@ -13,8 +13,6 @@ RUN  apt-get update && apt-get -y dist-upgrade && \
   sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
   dpkg-reconfigure --frontend=noninteractive locales && \
   update-locale LANG=en_US.UTF-8 && \
-  apt-get remove -y gdebi && apt-get autoremove -y && \
-  apt-get clean && \
   rm -rf /var/lib/apt/lists/* 
 
 RUN service postgresql start && \
